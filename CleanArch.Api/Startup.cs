@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 
 using MediatR;
 using Microsoft.OpenApi.Models;
+using CleanArch.Api.Configurations;
 
 namespace CleanArch.Api
 {
@@ -33,7 +34,10 @@ namespace CleanArch.Api
             services.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "University Api", Version = "v1" })
             );
+            
             services.AddMediatR(typeof(Startup));
+            
+            services.RegisterAutoMapper();
 
             RegisterServices(services);
         }
